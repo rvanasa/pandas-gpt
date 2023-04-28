@@ -1,8 +1,8 @@
 # `pandas-gpt` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rvanasa/pandas-gpt/blob/main/notebooks/pandas_gpt_demo.ipynb)
 
-> #### Power up your data science workflow with ChatGPT.
+> ### Power up your data science workflow with ChatGPT.
 
-### [Try in Google Colab](https://colab.research.google.com/github/rvanasa/pandas-gpt/blob/main/notebooks/pandas_gpt_demo.ipynb)
+---
 
 ## Installation
 
@@ -18,6 +18,8 @@ openai.api_key = 'sk-**********'
 ```
 
 ## Examples
+
+Setup and usage examples are available in [this Google Colab notebook](https://colab.research.google.com/github/rvanasa/pandas-gpt/blob/main/notebooks/pandas_gpt_demo.ipynb).
 
 ```python
 import pandas as pd
