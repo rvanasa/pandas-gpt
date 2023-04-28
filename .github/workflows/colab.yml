@@ -1,0 +1,25 @@
+name: Colab
+on: [push]
+
+jobs:
+  badges:
+    name: Update Colab Badges
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v2
+
+      - name: Update badges
+        id: badges
+        uses: trsvchn/colab-badge-action@v4
+        with:
+          check: "all"
+          target_branch: main
+          target_repository: rvanasa/pandas-gpt
+          update: true
+
+      - name: Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
