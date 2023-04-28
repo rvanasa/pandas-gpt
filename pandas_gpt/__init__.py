@@ -3,11 +3,8 @@ import pandas as pd
 _ask_cache = {}
 
 class Ask:
-  def __init__(self, *, openai_api_key=None, verbose=False):
+  def __init__(self, *, verbose=False):
     import os
-    self.openai_api_key = openai_api_key if openai_api_key is not None else os.getenv('OPENAI_API_KEY')
-    if self.openai_api_key is None:
-      print('Expected `OPENAI_API_KEY` environment variable')
     self.verbose = verbose
 
   @staticmethod
@@ -43,7 +40,6 @@ class Ask:
     import openai
     cache = _ask_cache
     completion = cache.get(prompt) or openai.ChatCompletion.create(
-      api_key=self.openai_api_key,
       model='gpt-3.5-turbo',
       messages=[
         # dict(role='system', content=''),
