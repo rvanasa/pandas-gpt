@@ -95,10 +95,15 @@ class AskAccessor:
     def _ask(self, **kw):
       return Ask(**kw)
 
+    def _data(self):
+      return self._obj.copy() # TODO: possibly `deep=False`
+
     def __call__(self, goal, *args, **kw):
         ask = self._ask(**kw)
-        return ask(goal, self._obj, *args)
+        data = self._data()
+        return ask(goal, data, *args)
 
     def code(self, goal, *args, **kw):
         ask = self._ask(**kw)
-        return ask.code(goal, self._obj, *args)
+        data = self._data()
+        return ask.code(goal, data, *args)
