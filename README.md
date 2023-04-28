@@ -34,4 +34,4 @@ df.ask.code('do something with the dataset')
 
 ---
 
-**Disclaimer:** Please take note of the [limitations](https://github.com/openai/gpt-3/blob/master/model-card.md#data-performance-and-limitations) of ChatGPT before using this library. I would recommend using `pandas-gpt` in a sandboxed notebook environment such as [Google Colab](https://colab.research.google.com) or [Kaggle](https://www.kaggle.com/docs/notebooks).
+**Disclaimer:** Please note that the [limitations](https://github.com/openai/gpt-3/blob/master/model-card.md#limitations) of ChatGPT also apply to this library. I would recommend using `pandas-gpt` in a sandboxed environment such as [Google Colab](https://colab.research.google.com), [Kaggle](https://www.kaggle.com/docs/notebooks), or [GitPod](https://www.gitpod.io/).
