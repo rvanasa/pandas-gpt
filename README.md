@@ -19,7 +19,7 @@ openai.api_key = 'sk-**********'
 
 ## Examples
 
-Setup and usage examples are available in [this Google Colab notebook](https://colab.research.google.com/github/rvanasa/pandas-gpt/blob/main/notebooks/pandas_gpt_demo.ipynb).
+Setup and usage examples are available in this **[Google Colab notebook](https://colab.research.google.com/github/rvanasa/pandas-gpt/blob/main/notebooks/pandas_gpt_demo.ipynb)**.
 
 ```python
 import pandas as pd
