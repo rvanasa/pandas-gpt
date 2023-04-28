@@ -1,3 +1,5 @@
+import pandas as pd
+
 _ask_cache = {}
 
 class Ask:
