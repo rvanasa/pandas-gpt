@@ -1,0 +1,11 @@
+[project]
+name = "pandas-gpt"
+description = "Power up your data science workflow with ChatGPT"
+version = "0.0.1"
+authors = [
+    { name = "Ryan Vandersmith" }
+]
+dependencies = [
+    "openai",
+    "pandas"
+]
