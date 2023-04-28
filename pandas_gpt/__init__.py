@@ -68,8 +68,6 @@ class Ask:
 
   def _code(self, goal, arg):
     prompt = self._get_prompt(goal, arg)
-    # if verbose:
-    #   print(prompt)
     result = self._run_prompt(prompt)
     if self.verbose:
       print()
