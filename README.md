@@ -4,7 +4,7 @@
 
 ### [Try in Google Colab](https://colab.research.google.com/github/rvanasa/pandas-gpt/blob/main/notebooks/pandas_gpt_demo.ipynb)
 
-## Setup
+## Installation
 
 ```bash
 pip install git+https://github.com/rvanasa/pandas-gpt
@@ -17,7 +17,7 @@ import openai
 openai.api_key = 'sk-**********'
 ```
 
-## Quick Reference
+## Examples
 
 ```python
 df = pd.DataFrame(...)
@@ -28,7 +28,7 @@ df.ask('do something with the dataset')
 # Show additional output
 df.ask('do something with the dataset', verbose=True)
 
-# Print code instead of running
+# Print source code instead of running
 df.ask.code('do something with the dataset')
 ```
 
