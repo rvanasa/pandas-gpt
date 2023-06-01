@@ -7,7 +7,7 @@
 ## Installation
 
 ```bash
-pip install git+https://github.com/rvanasa/pandas-gpt
+pip install pandas-gpt
 ```
 
 Set the `OPENAI_API_KEY` environment variable to your [OpenAI API key](https://platform.openai.com/account/api-keys), or use the following code snippet:
