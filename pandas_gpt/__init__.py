@@ -6,8 +6,9 @@ mutable = False # Override default setting with `pandas_gpt.mutable = True`
 _ask_cache = {}
 
 class Ask:
-  def __init__(self, *, verbose=None):
+  def __init__(self, *, verbose=None, mutable=None):
     self.verbose = verbose if verbose is not None else globals()['verbose']
+    self.mutable = mutable if mutable is not None else globals()['mutable']
 
   @staticmethod
   def _fill_template(template, **kw):
