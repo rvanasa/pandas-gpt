@@ -20,11 +20,14 @@ class Ask:
     return result
 
   def _get_prompt(self, goal, arg):
-    import io
-    buf = io.StringIO()
-    arg.info(buf=buf)
-    arg_summary = buf.getvalue()
-    arg_name = 'df' if isinstance(arg, pd.DataFrame) else 'data'
+    if isinstance(arg, pd.DataFrame) or isinstance(arg, pd.Series):
+      import io
+      buf = io.StringIO()
+      arg.info(buf=buf)
+      arg_summary = buf.getvalue()
+    else:
+      arg_summary = repr(arg)
+    arg_name = 'df' if isinstance(arg, pd.DataFrame) else 'index' if isinstance(arg, pd.Index) else 'data'
 
     return self._fill_template('''
       Write a Python function `process({arg_name})` which takes the following input value:
@@ -83,6 +86,8 @@ class Ask:
 
 
 @pd.api.extensions.register_dataframe_accessor('ask')
+@pd.api.extensions.register_series_accessor('ask')
+@pd.api.extensions.register_index_accessor('ask')
 class AskAccessor:
     def __init__(self, pandas_obj):
         self._validate(pandas_obj)
