@@ -1,7 +1,7 @@
 [project]
 name = "pandas-gpt"
 description = "Power up your data science workflow with ChatGPT"
-version = "0.3.0"
+version = "0.3.1"
 authors = [
     { name = "Ryan Vandersmith" }
 ]
