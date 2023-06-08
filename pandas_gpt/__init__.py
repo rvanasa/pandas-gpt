@@ -1,6 +1,7 @@
 import pandas as pd
 
 verbose = False # Override default setting with `pandas_gpt.verbose = True`
+fast = False # Override default setting with `pandas_gpt.fast = True`
 
 _ask_cache = {}
 
@@ -101,15 +102,17 @@ class AskAccessor:
     def _ask(self, **kw):
       return Ask(**kw)
 
-    def _data(self):
-      return self._obj.copy() # TODO: possibly `deep=False`
+    def _data(self, **kw):
+      if not fast and not kw.get('fast') and hasattr(self._obj, 'copy'):
+        return self._obj.copy() # TODO: possibly `deep=False`
+      return self._obj
 
     def __call__(self, goal, *args, **kw):
         ask = self._ask(**kw)
-        data = self._data()
+        data = self._data(**kw)
         return ask(goal, data, *args)
 
     def code(self, goal, *args, **kw):
         ask = self._ask(**kw)
-        data = self._data()
+        data = self._data(**kw)
         return ask.code(goal, data, *args)
