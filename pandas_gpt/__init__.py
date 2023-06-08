@@ -1,7 +1,7 @@
 import pandas as pd
 
 verbose = False # Override default setting with `pandas_gpt.verbose = True`
-fast = False # Override default setting with `pandas_gpt.fast = True`
+mutable = False # Override default setting with `pandas_gpt.mutable = True`
 
 _ask_cache = {}
 
@@ -103,7 +103,7 @@ class AskAccessor:
       return Ask(**kw)
 
     def _data(self, **kw):
-      if not fast and not kw.get('fast') and hasattr(self._obj, 'copy'):
+      if not mutable and not kw.get('mutable') and hasattr(self._obj, 'copy'):
         return self._obj.copy() # TODO: possibly `deep=False`
       return self._obj
 
