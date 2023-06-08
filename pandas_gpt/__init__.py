@@ -1,11 +1,12 @@
 import pandas as pd
 
+verbose = False # Override default setting with `pandas_gpt.verbose = True`
+
 _ask_cache = {}
 
 class Ask:
-  def __init__(self, *, verbose=False):
-    import os
-    self.verbose = verbose
+  def __init__(self, *, verbose=None):
+    self.verbose = verbose if verbose is not None else globals()['verbose']
 
   @staticmethod
   def _fill_template(template, **kw):
