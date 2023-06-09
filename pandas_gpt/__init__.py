@@ -6,16 +6,17 @@ mutable = False # Override default setting with `pandas_gpt.mutable = True`
 model = 'gpt-3.5-turbo'
 completion_config = {}
 
-_ask_cache = {}
 template = '''
-      Write a Python function `process({arg_name})` which takes the following input value:
+Write a Python function `process({arg_name})` which takes the following input value:
 
-      {arg_name} = {arg}
+{arg_name} = {arg}
 
-      This is the function's purpose: {goal}
+This is the function's purpose: {goal}
 
-      Write the function in a Python code block with all necessary imports and no example usage:
-    '''
+Write the function in a Python code block with all necessary imports and no example usage:
+'''
+
+_ask_cache = {}
 
 class Ask:
   def __init__(self, *, verbose=None, mutable=None):
@@ -50,11 +51,11 @@ class Ask:
     import openai
     cache = _ask_cache
     completion = cache.get(prompt) or openai.ChatCompletion.create(
+      model=model,
       messages=[
         # dict(role='system', content=''),
         dict(role='user', content=prompt),
       ],
-      model=model,
       **completion_config,
     )
     cache[prompt] = completion
