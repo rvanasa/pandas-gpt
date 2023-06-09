@@ -54,7 +54,8 @@ class Ask:
         # dict(role='system', content=''),
         dict(role='user', content=prompt),
       ],
-      **args
+      model=model,
+      **completion_config,
     )
     cache[prompt] = completion
     return completion['choices'][0]['message']['content']
