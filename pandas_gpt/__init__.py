@@ -83,6 +83,9 @@ class Ask:
   def code(self, *args):
     print(self._code(*args))
 
+  def prompt(self, *args):
+    print(self._get_prompt(*args))
+
   def __call__(self, goal, *args):
     source = self._code(goal, *args)
     return self._eval(source, *args)
@@ -117,3 +120,8 @@ class AskAccessor:
         ask = self._ask(**kw)
         data = self._data(**kw)
         return ask.code(goal, data, *args)
+
+    def prompt(self, goal, *args, **kw):
+        ask = self._ask(**kw)
+        data = self._data(**kw)
+        return ask.prompt(goal, data, *args)
