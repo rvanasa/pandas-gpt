@@ -18,7 +18,19 @@ Set the `OPENAI_API_KEY` environment variable to your [OpenAI API key](https://p
 import openai
 openai.api_key = 'sk-**********'
 ```
+## Or if you are using another host like Azure:
+```python
+import openai
+openai.api_type = "azure"
+openai.api_base = "<Endpoint>"
+openai.api_version = "<Version>"
+openai.api_key = "<API Key>"
 
+import pandas-gpt
+pandas_gpt.engine='<Deployment ID>' # Default is None
+#pandas_gpt.deployment_id='<Deployment ID>' If you need it, default is None
+#pandas_gpt.model='<model>' If you need it, default is gpt-3.5-turbo
+```
 ## Examples
 
 Setup and usage examples are available in this **[Google Colab notebook](https://colab.research.google.com/github/rvanasa/pandas-gpt/blob/main/notebooks/pandas_gpt_demo.ipynb)**.
