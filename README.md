@@ -19,6 +19,23 @@ import openai
 openai.api_key = 'sk-**********'
 ```
 
+Or if you are using another host like [Azure](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service):
+
+```python
+import openai
+openai.api_type = 'azure'
+openai.api_base = '<Endpoint>'
+openai.api_version = '<Version>'
+openai.api_key = '<API Key>'
+
+import pandas_gpt
+# pandas_gpt.model = '<model>' # If you need it; default is gpt-3.5-turbo
+pandas_gpt.completion_config = {
+  'engine': '<Engine>',
+  # 'deployment_id': '<Deployment ID>',
+}
+```
+
 ## Examples
 
 Setup and usage examples are available in this **[Google Colab notebook](https://colab.research.google.com/github/rvanasa/pandas-gpt/blob/main/notebooks/pandas_gpt_demo.ipynb)**.

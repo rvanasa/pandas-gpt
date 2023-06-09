@@ -3,7 +3,19 @@ import pandas as pd
 verbose = False # Override default setting with `pandas_gpt.verbose = True`
 mutable = False # Override default setting with `pandas_gpt.mutable = True`
 
+model = 'gpt-3.5-turbo'
+completion_config = {}
+
 _ask_cache = {}
+template = '''
+      Write a Python function `process({arg_name})` which takes the following input value:
+
+      {arg_name} = {arg}
+
+      This is the function's purpose: {goal}
+
+      Write the function in a Python code block with all necessary imports and no example usage:
+    '''
 
 class Ask:
   def __init__(self, *, verbose=None, mutable=None):
@@ -32,25 +44,18 @@ class Ask:
       arg_summary = repr(arg)
     arg_name = 'df' if isinstance(arg, pd.DataFrame) else 'index' if isinstance(arg, pd.Index) else 'data'
 
-    return self._fill_template('''
-      Write a Python function `process({arg_name})` which takes the following input value:
-
-      {arg_name} = {arg}
-
-      This is the function's purpose: {goal}
-
-      Write the function in a Python code block with all necessary imports and no example usage:
-    ''', arg_name=arg_name, arg=arg_summary.strip(), goal=goal.strip())
+    return self._fill_template(template, arg_name=arg_name, arg=arg_summary.strip(), goal=goal.strip())
 
   def _run_prompt(self, prompt):
     import openai
     cache = _ask_cache
     completion = cache.get(prompt) or openai.ChatCompletion.create(
-      model='gpt-3.5-turbo',
       messages=[
         # dict(role='system', content=''),
         dict(role='user', content=prompt),
-      ]
+      ],
+      model=model,
+      **completion_config,
     )
     cache[prompt] = completion
     return completion['choices'][0]['message']['content']
