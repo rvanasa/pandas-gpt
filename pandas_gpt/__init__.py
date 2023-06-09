@@ -49,7 +49,6 @@ class Ask:
   def _run_prompt(self, prompt):
     import openai
     cache = _ask_cache
-    args = {'model': model, 'deployment_id': deployment_id, 'engine': engine}
     completion = cache.get(prompt) or openai.ChatCompletion.create(
       messages=[
         # dict(role='system', content=''),
