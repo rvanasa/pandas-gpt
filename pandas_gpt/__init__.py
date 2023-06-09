@@ -3,10 +3,10 @@ import pandas as pd
 verbose = False # Override default setting with `pandas_gpt.verbose = True`
 mutable = False # Override default setting with `pandas_gpt.mutable = True`
 
-_ask_cache = {}
 model = 'gpt-3.5-turbo'
-deployment_id = None
-engine = None
+completion_config = {}
+
+_ask_cache = {}
 template = '''
       Write a Python function `process({arg_name})` which takes the following input value:
 
