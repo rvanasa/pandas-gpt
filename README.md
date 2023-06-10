@@ -16,10 +16,10 @@ Set the `OPENAI_API_KEY` environment variable to your [OpenAI API key](https://p
 
 ```python
 import openai
-openai.api_key = 'sk-**********'
+openai.api_key = '<API Key>'
 ```
 
-Or if you are using another host like [Azure](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service):
+If you are using another host like [Azure](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service):
 
 ```python
 import openai
@@ -29,7 +29,7 @@ openai.api_version = '<Version>'
 openai.api_key = '<API Key>'
 
 import pandas_gpt
-# pandas_gpt.model = '<model>' # If you need it; default is gpt-3.5-turbo
+# pandas_gpt.model = '<Model>' # Default is 'gpt-3.5-turbo'
 pandas_gpt.completion_config = {
   'engine': '<Engine>',
   # 'deployment_id': '<Deployment ID>',
