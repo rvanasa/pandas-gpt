@@ -4,7 +4,7 @@
 
 ---
 
-`pandas-gpt` is a Python library for doing almost anything with a [pandas](https://pandas.pydata.org/) DataFrame based on natural language queries. 
+`pandas-gpt` is a Python library for doing almost anything with a [pandas](https://pandas.pydata.org/) DataFrame using ChatGPT prompts. 
 
 ## Installation
 
@@ -17,23 +17,6 @@ Set the `OPENAI_API_KEY` environment variable to your [OpenAI API key](https://p
 ```python
 import openai
 openai.api_key = '<API Key>'
-```
-
-If you are using another host like [Azure](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service):
-
-```python
-import openai
-openai.api_type = 'azure'
-openai.api_base = '<Endpoint>'
-openai.api_version = '<Version>'
-openai.api_key = '<API Key>'
-
-import pandas_gpt
-# pandas_gpt.model = '<Model>' # Default is 'gpt-3.5-turbo'
-pandas_gpt.completion_config = {
-  'engine': '<Engine>',
-  # 'deployment_id': '<Deployment ID>',
-}
 ```
 
 ## Examples
@@ -60,6 +43,25 @@ df.ask('clean the dataset', verbose=True)
 
 # Print source code without running
 df.ask.code('do something interesting with the dataset')
+```
+
+## Other Hosts
+
+If you want to use a different API host such as [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service):
+
+```python
+import openai
+openai.api_type = 'azure'
+openai.api_base = '<Endpoint>'
+openai.api_version = '<Version>'
+openai.api_key = '<API Key>'
+
+import pandas_gpt
+# pandas_gpt.model = '<Model>' # Default is 'gpt-3.5-turbo'
+pandas_gpt.completion_config = {
+  'engine': '<Engine>',
+  # 'deployment_id': '<Deployment ID>',
+}
 ```
 
 ## Alternatives
