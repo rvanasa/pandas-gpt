@@ -27,7 +27,7 @@ Setup and usage examples are available in this **[Google Colab notebook](https:/
 import pandas as pd
 import pandas_gpt
 
-df = pd.DataFrame(...)
+df = pd.DataFrame('https://gist.githubusercontent.com/bluecoconut/9ce2135aafb5c6ab2dc1d60ac595646e/raw/c93c3500a1f7fae469cba716f09358cfddea6343/sales_demo_with_pii_and_all_states.csv')
 
 # Data transformation
 df = df.ask('drop purchases from Laurenchester, NY')
