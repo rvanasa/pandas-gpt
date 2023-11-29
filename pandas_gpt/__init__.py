@@ -12,8 +12,6 @@ Write a Python function `process({arg_name})` which takes the following input va
 {arg_name} = {arg}
 
 This is the function's purpose: {goal}
-
-Write the function in a Python code block with all necessary imports and no example usage:
 '''
 
 _ask_cache = {}
@@ -50,16 +48,16 @@ class Ask:
   def _run_prompt(self, prompt):
     import openai
     cache = _ask_cache
-    completion = cache.get(prompt) or openai.ChatCompletion.create(
+    completion = cache.get(prompt) or openai.chat.completions.create(
       model=model,
       messages=[
-        # dict(role='system', content=''),
+        dict(role='system', content='Write the function in a Python code block with all necessary imports and no example usage.'),
         dict(role='user', content=prompt),
       ],
       **completion_config,
     )
     cache[prompt] = completion
-    return completion['choices'][0]['message']['content']
+    return completion.choices[0].message.content
 
   def _extract_code_block(self, text):
     import re
