@@ -12,8 +12,6 @@ Write a Python function `process({arg_name})` which takes the following input va
 {arg_name} = {arg}
 
 This is the function's purpose: {goal}
-
-Write the function in a Python code block with all necessary imports and no example usage:
 '''
 
 _ask_cache = {}
@@ -53,7 +51,7 @@ class Ask:
     completion = cache.get(prompt) or openai.chat.completions.create(
       model=model,
       messages=[
-        # dict(role='system', content=''),
+        dict(role='system', content='Write the function in a Python code block with all necessary imports and no example usage.'),
         dict(role='user', content=prompt),
       ],
       **completion_config,
