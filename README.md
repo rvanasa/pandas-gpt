@@ -10,10 +10,11 @@
 
 ```bash
 pip install pandas-gpt
-pip install openai # Optional
 ```
 
-Set the `OPENAI_API_KEY` environment variable to your [OpenAI API key](https://platform.openai.com/account/api-keys), or use the following code snippet:
+You may also want to install the optional [`openai`](https://pypi.org/project/openai/) and/or [`litellm`](https://pypi.org/project/litellm/) dependencies.
+
+Next, set the `OPENAI_API_KEY` environment variable to your [OpenAI API key](https://platform.openai.com/account/api-keys), or use the following code snippet:
 
 ```python
 import openai
