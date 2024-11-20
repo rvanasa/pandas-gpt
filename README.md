@@ -84,6 +84,12 @@ pandas_gpt.completer = pandas_gpt.OpenAI('gpt-4o')
 pandas_gpt.completer = pandas_gpt.LiteLLM('gemini/gemini-1.5-pro')
 ```
 
+### Local (Huggingface)
+
+```python
+pandas_gpt.completer = pandas_gpt.LiteLLM('huggingface/meta-llama/Meta-Llama-3.1-8B-Instruct')
+```
+
 ### OpenRouter
 
 ```python
@@ -94,7 +100,7 @@ pandas_gpt.completer = pandas_gpt.OpenRouter('anthropic/claude-3.5-sonnet')
 
 ```python
 def my_custom_completer(prompt: str) -> str:
-  ...
+  return 'def process(df): ...'
 
 pandas_gpt.completer = my_custom_completer
 ```
