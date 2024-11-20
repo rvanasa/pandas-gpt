@@ -61,7 +61,7 @@ import pandas_gpt
 pandas_gpt.completer = pandas_gpt.OpenAI('gpt-3.5-turbo')
 
 # Custom completer for a specific request
-df.ask('Do something cool', completer=pandas_gpt.LiteLLM('gemini/gemini-1.5-pro'))
+df.ask('Do something interesting with the data', completer=pandas_gpt.LiteLLM('gemini/gemini-1.5-pro'))
 ```
 
 If you want to use a fully customized API host such as [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service),
