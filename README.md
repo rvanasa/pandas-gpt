@@ -4,7 +4,7 @@
 
 ---
 
-`pandas-gpt` is a Python library for doing almost anything with a [pandas](https://pandas.pydata.org/) DataFrame using ChatGPT prompts.
+`pandas-gpt` is a Python library for doing almost anything with a [pandas](https://pandas.pydata.org/) DataFrame using ChatGPT or any other [Large Language Model](https://www.cloudflare.com/learning/ai/what-is-large-language-model/) (LLM).
 
 ## Installation
 

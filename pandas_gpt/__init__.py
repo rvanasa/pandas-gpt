@@ -18,11 +18,11 @@ __all__ = [
 @dataclass
 class OpenAI:
     config: dict[str, Any]
-    cache: dict[str, str] = {}
+    cache: dict[str, str]
 
     def __init__(self, model: str, **config):
-        self.config = config
-        self.config["model"] = model
+        self.config = {"model": model, **config}
+        self.cache = {}
 
     def __call__(self, prompt: str) -> str:
         completion = self.cache.get(prompt) or self.run_completion_function(
