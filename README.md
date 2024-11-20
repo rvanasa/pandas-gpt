@@ -10,6 +10,7 @@
 
 ```bash
 pip install pandas-gpt
+pip install openai # Optional dependency
 ```
 
 You may also want to install the optional [`openai`](https://pypi.org/project/openai/) and/or [`litellm`](https://pypi.org/project/litellm/) dependencies.
