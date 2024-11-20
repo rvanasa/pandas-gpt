@@ -46,7 +46,10 @@ class Ask:
     return self._fill_template(template, arg_name=arg_name, arg=arg_summary.strip(), goal=goal.strip())
 
   def _run_prompt(self, prompt):
-    import openai
+    try:
+      import openai
+    except ImportError:
+      raise Exception('The package `openai` could not be found. You can fix this error by either installing this package or passing a custom `completer` argument.')
     cache = _ask_cache
     completion = cache.get(prompt) or openai.chat.completions.create(
       model=model,
