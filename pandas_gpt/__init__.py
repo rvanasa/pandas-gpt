@@ -33,10 +33,7 @@ class OpenAI:
         completion = self._cache.get(prompt) or self.run_completion_function(
             **self.completion_config,
             messages=[
-                dict(
-                    role="system",
-                    content=system_prompt,
-                ),
+                dict(role="system", content=system_prompt),
                 dict(role="user", content=prompt),
             ],
         )
