@@ -4,12 +4,13 @@
 
 ---
 
-`pandas-gpt` is a Python library for doing almost anything with a [pandas](https://pandas.pydata.org/) DataFrame using ChatGPT prompts. 
+`pandas-gpt` is a Python library for doing almost anything with a [pandas](https://pandas.pydata.org/) DataFrame using ChatGPT prompts.
 
 ## Installation
 
 ```bash
 pip install pandas-gpt
+pip install openai # Optional
 ```
 
 Set the `OPENAI_API_KEY` environment variable to your [OpenAI API key](https://platform.openai.com/account/api-keys), or use the following code snippet:
@@ -48,9 +49,22 @@ df.ask('do something interesting', mutable=True)
 df.ask('convert prices from USD to GBP', verbose=True)
 ```
 
-## Other Hosts
+## Custom Models
 
-If you want to use a different API host such as [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service):
+It's possible to use a different language model with the `completer` config option:
+
+```python
+import pandas_gpt
+
+# Global default
+pandas_gpt.completer = pandas_gpt.OpenAI('gpt-3.5-turbo')
+
+# Custom completer for a specific request
+df.ask('Do something cool', completer=pandas_gpt.LiteLLM('gemini/gemini-1.5-pro'))
+```
+
+If you want to use a fully customized API host such as [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service),
+you can globally configure the `openai` and `pandas-gpt` packages:
 
 ```python
 import openai
@@ -60,11 +74,11 @@ openai.api_version = '<Version>'
 openai.api_key = '<API Key>'
 
 import pandas_gpt
-# pandas_gpt.model = '<Model>' # Default is 'gpt-3.5-turbo'
-pandas_gpt.completion_config = {
-  'engine': '<Engine>',
-  # 'deployment_id': '<Deployment ID>',
-}
+pandas_gpt.completer = pandas_gpt.OpenAI(
+  model='gpt-3.5-turbo',
+  engine='<Engine>',
+  deployment_id='<Deployment ID>',
+)
 ```
 
 ## Alternatives

@@ -1,10 +1,14 @@
 [project]
 name = "pandas-gpt"
 description = "Power up your data science workflow with ChatGPT"
-version = "0.7.0"
+version = "1.0.0"
 authors = [{ name = "Ryan Vandersmith" }]
 readme = "README.md"
 dependencies = ["pandas"]
+
+[project.optional-dependencies]
+openai = ["openai"]
+litellm = ["litellm"]
 
 [tool.setuptools]
 packages = ["pandas_gpt"]
