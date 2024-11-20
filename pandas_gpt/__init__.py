@@ -11,22 +11,27 @@ __all__ = [
     "Ask",
     "AskAccessor",
     "OpenAI",
+    "OpenRouter",
     "LiteLLM",
 ]
 
 
 @dataclass
 class OpenAI:
-    config: dict[str, Any]
-    cache: dict[str, str]
+    completion_config: dict[str, Any]
+    client_config: dict[str, Any]
+    _cache: dict[str, str]
+    _client: Any
 
-    def __init__(self, model: str, **config):
-        self.config = {"model": model, **config}
-        self.cache = {}
+    def __init__(self, model: str, **client_config):
+        self.completion_config = {"model": model}
+        self.client_config = client_config
+        self._cache = {}
+        self._client = None
 
     def __call__(self, prompt: str) -> str:
-        completion = self.cache.get(prompt) or self.run_completion_function(
-            **self.config,
+        completion = self._cache.get(prompt) or self.run_completion_function(
+            **self.completion_config,
             messages=[
                 dict(
                     role="system",
@@ -35,17 +40,25 @@ class OpenAI:
                 dict(role="user", content=prompt),
             ],
         )
-        self.cache[prompt] = completion
+        self._cache[prompt] = completion
         return completion.choices[0].message.content
 
     def run_completion_function(self, **kw):
-        try:
-            import openai
-        except ImportError:
-            raise Exception(
-                "The package `openai` could not be found. You can fix this error by running `pip install pandas-gpt[openai]` or passing a custom `completer` argument."
-            )
-        return openai.chat.completions.create(**kw)
+        if self._client is None:
+            try:
+                import openai
+            except ImportError:
+                raise Exception(
+                    "The package `openai` could not be found. You can fix this error by running `pip install pandas-gpt[openai]` or passing a custom `completer` argument."
+                )
+            self._client = openai.OpenAI(**self.client_config)
+        return self._client.chat.completions.create(**kw)
+
+
+@dataclass
+class OpenRouter(OpenAI):
+    def __init__(self, model: str, **config):
+        super().__init__(self, model, base_url="https://openrouter.ai/api/v1", **config)
 
 
 class LiteLLM(OpenAI):
@@ -56,7 +69,7 @@ class LiteLLM(OpenAI):
             raise Exception(
                 "The package `litellm` could not be found. You can fix this error by running `pip install pandas-gpt[litellm]` or passing a custom `completer` argument."
             )
-        return litellm.completion(**kw)
+        return litellm.completion(**self.completion_config, **kw)
 
 
 # Override with `pandas_gpt.verbose = True`
@@ -119,7 +132,6 @@ class Ask:
             if isinstance(arg, pd.DataFrame)
             else "index" if isinstance(arg, pd.Index) else "data"
         )
-
         return self._fill_template(
             template, arg_name=arg_name, arg=arg_summary.strip(), goal=goal.strip()
         )

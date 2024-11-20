@@ -4,6 +4,7 @@ description = "Power up your data science workflow with ChatGPT"
 version = "1.0.0"
 authors = [{ name = "Ryan Vandersmith" }]
 readme = "README.md"
+requires-python = ">= 3.10"
 dependencies = ["pandas"]
 
 [project.optional-dependencies]

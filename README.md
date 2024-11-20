@@ -50,7 +50,7 @@ df.ask('do something interesting', mutable=True)
 df.ask('convert prices from USD to GBP', verbose=True)
 ```
 
-## Custom Models
+## Custom Language Models
 
 It's possible to use a different language model with the `completer` config option:
 
@@ -62,6 +62,40 @@ pandas_gpt.completer = pandas_gpt.OpenAI('gpt-3.5-turbo')
 
 # Custom completer for a specific request
 df.ask('Do something interesting with the data', completer=pandas_gpt.LiteLLM('gemini/gemini-1.5-pro'))
+```
+
+By default, API keys are picked up from environment variables such as `OPENAI_API_KEY`.
+It's also possible to specify an API key for a particular call:
+
+```python
+df.ask('Do something important with the data', completer=pandas_gpt.OpenAI('gpt-4o', api_key='...'))
+```
+
+### OpenAI
+
+```python
+pandas_gpt.completer = pandas_gpt.OpenAI('gpt-4o')
+```
+
+### LiteLLM
+
+```python
+pandas_gpt.completer = pandas_gpt.LiteLLM('gemini/gemini-1.5-pro')
+```
+
+### OpenRouter
+
+```python
+pandas_gpt.completer = pandas_gpt.OpenRouter('anthropic/claude-3.5-sonnet')
+```
+
+### Anything
+
+```python
+def my_custom_completer(prompt: str) -> str:
+  ...
+
+pandas_gpt.completer = my_custom_completer
 ```
 
 If you want to use a fully customized API host such as [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service),
