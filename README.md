@@ -100,7 +100,7 @@ pandas_gpt.completer = pandas_gpt.OpenRouter('anthropic/claude-3.5-sonnet')
 
 ```python
 def my_custom_completer(prompt: str) -> str:
-  return 'def process(df): ...'
+  return 'import pandas as pd; def process(df): ...'
 
 pandas_gpt.completer = my_custom_completer
 ```

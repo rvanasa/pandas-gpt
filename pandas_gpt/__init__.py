@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import Any, Callable
 import pandas as pd
+import os
 
 __all__ = [
     "verbose",
@@ -48,7 +49,11 @@ class OpenAI:
                 raise Exception(
                     "The package `openai` could not be found. You can fix this error by running `pip install pandas-gpt[openai]` or passing a custom `completer` argument."
                 )
-            self._client = openai.OpenAI(**self.client_config)
+            client_config = dict(self.client_config)
+            api_key = os.environ.get("OPENAI_API_KEY", openai.api_key)
+            if api_key is not None and "api_key" not in client_config:
+                client_config["api_key"] = api_key
+            self._client = openai.OpenAI(**client_config)
         return self._client.chat.completions.create(**kw)
 
 
