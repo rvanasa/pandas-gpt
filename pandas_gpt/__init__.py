@@ -71,7 +71,7 @@ class LiteLLM(OpenAI):
             raise Exception(
                 "The package `litellm` could not be found. You can fix this error by running `pip install pandas-gpt[litellm]` or passing a custom `completer` argument."
             )
-        return litellm.completion(**self.completion_config, **kw)
+        return litellm.completion(**kw)
 
 
 # Override with `pandas_gpt.verbose = True`
