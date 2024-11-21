@@ -1,6 +1,6 @@
 # `pandas-gpt` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/rvanasa/pandas-gpt/blob/main/notebooks/pandas_gpt_demo.ipynb)
 
-> ### Power up your data science workflow with ChatGPT.
+> ### Power up your data science workflow with LLMs.
 
 ---
 
@@ -20,6 +20,17 @@ Next, set the `OPENAI_API_KEY` environment variable to your [OpenAI API key](htt
 ```python
 import openai
 openai.api_key = '<API Key>'
+```
+
+If you're looking for a free alternative to the OpenAI API, we encourage using [Google Gemini](https://ai.google.dev/gemini-api/docs/api-key) for code completion:
+
+```bash
+pip install pandas-gpt litellm
+```
+
+```python
+import pandas_gpt
+pandas_gpt.completer = pandas_gpt.LiteLLM('gemini/gemini-1.5-pro', api_key='...')
 ```
 
 ## Examples
