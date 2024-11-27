@@ -5,13 +5,19 @@ import pandas as pd
 from pandas_gpt.completers import LiteLLM, OpenAI, OpenRouter
 
 __all__ = [
+    # Global config
     "verbose",
     "mutable",
     "completer",
     "system_prompt",
     "template",
+
+    # Utility classes
     "Ask",
     "AskAccessor",
+
+    # Completers
+    "completers",
     "LiteLLM",
     "OpenAI",
     "OpenRouter",
