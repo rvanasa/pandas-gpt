@@ -9,8 +9,7 @@
 ## Installation
 
 ```bash
-pip install pandas-gpt
-pip install openai # Optional dependency
+pip install pandas-gpt[openai]
 ```
 
 You may also want to install the optional [`openai`](https://pypi.org/project/openai/) and/or [`litellm`](https://pypi.org/project/litellm/) dependencies.
@@ -25,7 +24,7 @@ openai.api_key = '<API Key>'
 If you're looking for a free alternative to the OpenAI API, we encourage using [Google Gemini](https://ai.google.dev/gemini-api/docs/api-key) for code completion:
 
 ```bash
-pip install pandas-gpt litellm
+pip install pandas-gpt[litellm]
 ```
 
 ```python
@@ -111,7 +110,10 @@ pandas_gpt.completer = pandas_gpt.OpenRouter('anthropic/claude-3.5-sonnet')
 
 ```python
 def my_custom_completer(prompt: str) -> str:
-  return 'import pandas as pd; def process(df): ...'
+  # Use an LLM or any other method to create a `process()` function that
+  # takes a pandas DataFrame as a single argument, does some operations on it,
+  # and return a DataFrame.
+  return 'def process(df): ...'
 
 pandas_gpt.completer = my_custom_completer
 ```
