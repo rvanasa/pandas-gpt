@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Any, Callable
 import pandas as pd
 
-from pandas_gpt.completers import OpenAI, OpenRouter, LiteLLM
+from pandas_gpt.completers import LiteLLM, OpenAI, OpenRouter
 
 __all__ = [
     "verbose",
@@ -12,9 +12,9 @@ __all__ = [
     "template",
     "Ask",
     "AskAccessor",
+    "LiteLLM",
     "OpenAI",
     "OpenRouter",
-    "LiteLLM",
 ]
 
 # Override with `pandas_gpt.verbose = True`
@@ -23,7 +23,6 @@ verbose: bool = False
 mutable: bool = False
 # Override with `pandas_gpt.completer = ...`
 completer: Callable[[str], str] = OpenAI("gpt-3.5-turbo")
-system_prompt = "Write the function in a Python code block with all necessary imports and no example usage."
 # Override with `pandas_gpt.template = ...`
 template = """
 Write a Python function `process({arg_name})` which takes the following input value:
