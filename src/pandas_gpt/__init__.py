@@ -9,7 +9,6 @@ __all__ = [
     "verbose",
     "mutable",
     "completer",
-    "system_prompt",
     "template",
 
     # Utility classes
@@ -17,6 +16,7 @@ __all__ = [
     "AskAccessor",
 
     # Completers
+    "completers",
     "LiteLLM",
     "OpenAI",
     "OpenRouter",
