@@ -131,10 +131,8 @@ openai.api_key = '<API Key>'
 import pandas_gpt
 pandas_gpt.completer = pandas_gpt.OpenAI(
   model='gpt-3.5-turbo',
-  client_config = dict(
-    engine='<Engine>',
-    deployment_id='<Deployment ID>',
-  ),
+  engine='<Engine>',
+  deployment_id='<Deployment ID>',
 )
 ```
 

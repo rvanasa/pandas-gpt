@@ -11,21 +11,14 @@ default_system_prompt = "Write the function in a Python code block with all nece
 class OpenAI:
     completion_config: dict[str, Any]
     client_config: dict[str, Any]
+    system_prompt: str
     _cache: dict[str, str]
     _client: Any
 
-    def __init__(
-        self,
-        model: str,
-        *,
-        system_prompt: str | None = default_system_prompt,
-        client_config: dict[str, Any] | None = None,
-    ):
+    def __init__(self, model: str, **client_config):
         self.completion_config = {"model": model}
-        self.client_config = client_config if client_config is not None else {}
-        self.system_prompt = (
-            system_prompt if system_prompt is not None else default_system_prompt
-        )
+        self.client_config = client_config
+        self.system_prompt = default_system_prompt
         self._cache = {}
         self._client = None
 
