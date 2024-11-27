@@ -17,7 +17,6 @@ __all__ = [
     "AskAccessor",
 
     # Completers
-    "completers",
     "LiteLLM",
     "OpenAI",
     "OpenRouter",
