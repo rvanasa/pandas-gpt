@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Any, Callable
 import pandas as pd
 
-from pandas_gpt.completers import LiteLLM, OpenAI, OpenRouter
+from .completers import LiteLLM, OpenAI, OpenRouter
 
 __all__ = [
     # Global config
