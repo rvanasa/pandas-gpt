@@ -2,7 +2,7 @@ from dataclasses import dataclass
 import os
 from typing import Any
 
-__all__ = ["OpenAI"]
+__all__ = ["AzureOpenAI"]
 
 default_system_prompt = "Write the function in a Python code block with all necessary imports and no example usage."
 
