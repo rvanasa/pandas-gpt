@@ -105,6 +105,10 @@ pandas_gpt.completer = pandas_gpt.LiteLLM('huggingface/meta-llama/Meta-Llama-3.1
 ```python
 pandas_gpt.completer = pandas_gpt.OpenRouter('anthropic/claude-3.5-sonnet')
 ```
+
+### Azure
+
+If you want to use the [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service),
 you can globally configure the `openai` and `pandas-gpt` packages:
 
 ```python
@@ -134,7 +138,6 @@ def my_custom_completer(prompt: str) -> str:
   return 'def process(df): ...'
 
 pandas_gpt.completer = my_custom_completer
-=======
 ```
 
 ## Alternatives
