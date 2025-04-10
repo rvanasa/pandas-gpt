@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import Any, Callable
 import pandas as pd
 
-from .completers import AzureOpenAi, LiteLLM, OpenAI, OpenRouter
+from .completers import AzureOpenAI, LiteLLM, OpenAI, OpenRouter
 
 __all__ = [
     # Global config
@@ -20,7 +20,7 @@ __all__ = [
     "LiteLLM",
     "OpenAI",
     "OpenRouter",
-    "AzureOpenAi",
+    "AzureOpenAI",
 ]
 
 # Override with `pandas_gpt.verbose = True`
