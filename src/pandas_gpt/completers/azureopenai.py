@@ -15,8 +15,8 @@ class AzureOpenAI:
     _cache: dict[str, str]
     _client: Any
 
-    def __init__(self, model: str, **client_config):
-        self.completion_config = {"model": model}
+    def __init__(self, deployment: str, **client_config):
+        self.completion_config = {"model": deployment}
         self.client_config = client_config
         self.system_prompt = default_system_prompt
         self._cache = {}

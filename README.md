@@ -106,6 +106,23 @@ pandas_gpt.completer = pandas_gpt.LiteLLM('huggingface/meta-llama/Meta-Llama-3.1
 pandas_gpt.completer = pandas_gpt.OpenRouter('anthropic/claude-3.5-sonnet')
 ```
 
+### Azure OpenAI
+
+Get your settings from [Azure AI Foundry](https://oai.azure.com/) or your system administrator.
+
+```python
+import openai
+import pandas_gpt
+
+openai.api_key = '<API Key>'
+
+pandas_gpt.completer = pandas_gpt.AzureOpenAI(
+  deployment=<Deployment ID>,
+  azure_endpoint=<Azure OpenAI Endpoint>,
+  api_version=<Api version>,
+)
+```
+
 ### Anything
 
 ```python
@@ -116,24 +133,6 @@ def my_custom_completer(prompt: str) -> str:
   return 'def process(df): ...'
 
 pandas_gpt.completer = my_custom_completer
-```
-
-If you want to use a fully customized API host such as [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service),
-you can globally configure the `openai` and `pandas-gpt` packages:
-
-```python
-import openai
-openai.api_type = 'azure'
-openai.api_base = '<Endpoint>'
-openai.api_version = '<Version>'
-openai.api_key = '<API Key>'
-
-import pandas_gpt
-pandas_gpt.completer = pandas_gpt.OpenAI(
-  model='gpt-3.5-turbo',
-  engine='<Engine>',
-  deployment_id='<Deployment ID>',
-)
 ```
 
 ## Alternatives
