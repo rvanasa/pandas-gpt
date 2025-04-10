@@ -45,8 +45,8 @@ class OpenAI:
             api_key = os.environ.get("OPENAI_API_KEY", openai.api_key)
             if api_key is not None and "api_key" not in client_config:
                 client_config["api_key"] = api_key
-            self._client = self.create_client(openai, **client_config)
+            self._client = self._create_client(openai, **client_config)
         return self._client.chat.completions.create(**kw)
 
-    def create_client(openai, **kw):
+    def _create_client(openai, **kw):
         return openai.OpenAI(**kw)
