@@ -106,19 +106,9 @@ pandas_gpt.completer = pandas_gpt.LiteLLM('huggingface/meta-llama/Meta-Llama-3.1
 pandas_gpt.completer = pandas_gpt.OpenRouter('anthropic/claude-3.5-sonnet')
 ```
 
-### Anything
+### Azure
 
-```python
-def my_custom_completer(prompt: str) -> str:
-  # Use an LLM or any other method to create a `process()` function that
-  # takes a pandas DataFrame as a single argument, does some operations on it,
-  # and return a DataFrame.
-  return 'def process(df): ...'
-
-pandas_gpt.completer = my_custom_completer
-```
-
-If you want to use a fully customized API host such as [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service),
+If you want to use the [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service),
 you can globally configure the `openai` and `pandas-gpt` packages:
 
 ```python
@@ -129,11 +119,25 @@ openai.api_version = '<Version>'
 openai.api_key = '<API Key>'
 
 import pandas_gpt
-pandas_gpt.completer = pandas_gpt.OpenAI(
+pandas_gpt.completer = pandas_gpt.AzureOpenAI(
   model='gpt-3.5-turbo',
   engine='<Engine>',
   deployment_id='<Deployment ID>',
 )
+```
+
+### Custom
+
+It's also possible to use fully custom code generation:
+
+```python
+def my_custom_completer(prompt: str) -> str:
+  # Use an LLM or any other method to create a `process()` function that
+  # takes a pandas DataFrame as a single argument, does some operations on it,
+  # and return a DataFrame.
+  return 'def process(df): ...'
+
+pandas_gpt.completer = my_custom_completer
 ```
 
 ## Alternatives
