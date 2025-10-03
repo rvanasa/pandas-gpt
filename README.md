@@ -142,7 +142,6 @@ pandas_gpt.completer = my_custom_completer
 
 ## Alternatives
 
-- [GitHub Copilot](https://github.com/features/copilot): General-purpose code completion (paid subscription)
 - [Sketch](https://github.com/approximatelabs/sketch): AI-powered data summarization and code suggestions (works without an API key)
 
 ## Disclaimer
