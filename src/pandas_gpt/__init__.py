@@ -17,6 +17,7 @@ __all__ = [
 
     # Completers
     "completers",
+    "AzureOpenAI",
     "LiteLLM",
     "OpenAI",
     "OpenRouter",
